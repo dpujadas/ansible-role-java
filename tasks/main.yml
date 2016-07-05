@@ -1,0 +1,18 @@
+---
+# tasks file for java
+
+- name: Install openjdk packages
+  apt:
+    name: 'openjdk-{{ java_version }}-{{ item }}'
+    state: 'present'
+    update_cache: 'yes'
+  with_items: '{{ java_openjdk_packages }}'
+  when: not java_use_oracle
+  tags:
+    - java
+
+- include: 'oracle.yml'
+  when: java_use_oracle
+  tags:
+    - java
+    - java-oracle

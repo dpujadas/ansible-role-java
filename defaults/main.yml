@@ -1,0 +1,10 @@
+---
+# defaults file for java
+
+java_version: '7'
+java_use_oracle: False
+
+java_openjdk_packages:
+  - jre-headless
+
+java_oracle_set_as_default: True

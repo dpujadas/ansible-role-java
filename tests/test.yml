@@ -1,0 +1,10 @@
+---
+- hosts: travis
+  connection: docker
+  remote_user: root
+  roles:
+    - {
+      role: ansible-role-java,
+      java_version: '8',
+      java_use_oracle: True
+    }

@@ -1,0 +1,21 @@
+galaxy_info:
+  author: David Pujadas
+  description: Ansible role to install Java on Ubuntu server using openjdk or WebUpd8 Oracle Java PPA repository
+
+  license: MIT
+
+  min_ansible_version: 1.9
+
+  platforms:
+  - name: Ubuntu
+    versions:
+      - precise
+      - trusty
+      - wily
+      - xenial
+
+  galaxy_tags:
+    - ubuntu
+    - java
+
+dependencies: []

@@ -1,0 +1,32 @@
+---
+# tasks file for oracle
+
+- name: Add the WebUpd8 Oracle Java PPA repository
+  apt_repository:
+    repo: 'ppa:webupd8team/java'
+    state: 'present'
+
+- name: Automatically accept the Oracle license
+  debconf:
+    name: 'oracle-java{{ java_version }}-installer'
+    question: 'shared/accepted-oracle-license-v1-1'
+    value: 'true'
+    vtype: 'select'
+
+- name: Install JDK and JRE packages
+  apt:
+    name: 'oracle-java{{ java_version }}-installer'
+    state: 'present'
+    force: 'yes'
+
+- name: Set this as default Java
+  apt:
+    name: 'oracle-java{{ java_version }}-set-default'
+    state: 'present'
+    force: 'yes'
+  when: java_oracle_set_as_default
+
+- name: Remove instalation cache
+  file:
+    path: '/var/cache/oracle-jdk{{ java_version }}-installer'
+    state: 'absent'
